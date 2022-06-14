@@ -16,7 +16,7 @@
 
                 <div class="form-group">
                     {!! Form::label('affiliation', '所属／勤務先') !!}
-                    {!! Form::email('affiliation', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('affiliation', null, ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">
