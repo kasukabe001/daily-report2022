@@ -5,9 +5,9 @@ Route::get('/', function () {
 });
 /*
 Route::get('/', 'ReportsController@index');
-
-Route::resource('reports', 'ReportsController');
 */
+Route::resource('reports', 'ReportsController');
+
 
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
