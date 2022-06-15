@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','affiliation'
     ];
 
     /**
@@ -36,4 +36,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * このユーザが所有する日報。（ Reportモデルとの関係を定義）
+     */
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
+
+    /**
+     * このユーザに関係するモデルの件数をロードする。
+     */
+    public function loadRelationshipCounts()
+    {
+        $this->loadCount('reports');
+    }
+
 }
