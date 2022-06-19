@@ -2,7 +2,12 @@
 
 @section('content')
     @if (Auth::check())
-        {{ Auth::user()->name }}
+            <div class="col-sm-8">
+                {{-- 投稿フォーム --}}
+                @include('reports.form')
+                {{-- 投稿一覧 --}}
+        {{--    @include('reports.reports') --}}
+            </div>
     @else
         <div class="center jumbotron">
             <div class="text-center">

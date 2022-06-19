@@ -14,7 +14,7 @@ class ChangeAffiliationUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            // noteカラムにNULLを許容
+            // affiliationカラムにNULLを許容
             $table->string('affiliation')->nullable()->change();
         });
     }
@@ -27,7 +27,7 @@ class ChangeAffiliationUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            // noteカラムにNULLを許容しない
+            // affiliationカラムにNULLを許容しない
             $table->string('affiliation')->nullable(false)->change();
         });
     }

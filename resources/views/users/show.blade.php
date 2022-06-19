@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    <h1>プロファイル</h3>
+    <br>
     <div class="row">
         <aside class="col-sm-4">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">プロファイル</h3>
-                </div>
                 <div class="card-body">
                 </div>
                     <table class="table table-striped table-bordered">
@@ -27,4 +26,5 @@
             </div>
         </aside>
     </div>
+    <button type="button " class="btn btn-secondary" onClick="history.back()">戻る</button>
 @endsection

@@ -3,9 +3,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-/*
-Route::get('/', 'ReportsController@index');
-*/
+
+//Route::get('/', 'ReportsController@index');
+
 Route::resource('reports', 'ReportsController');
 
 
@@ -20,4 +20,5 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+    Route::resource('reports', 'ReportsController', ['only' => ['index','store', 'destroy']]);
 });
