@@ -14,16 +14,16 @@
                 @foreach ($reports as $report)
                 <tr>
                     <td>{{ $report->id }}</td>
-                    <td>{{ Str::limit($report->created_at, 10,'') }}</td>
+                    <td class='text-nowrap'>{{ Str::limit($report->created_at, 10,'') }}</td>
                     <td>{!! nl2br(e($report->report)) !!}</td>
                     <td>
                         @if ( $report->status!='1')
-                            {!! link_to_route('reports.edit', '編集', ['report' => $report->id], ['class' => 'btn btn-success']) !!}
+                            {!! link_to_route('reports.edit', '編集', ['report' => $report->id], ['class' => 'btn btn-success text-nowrap']) !!}
                         @endif
                     </td>
-                    <td>
-                    @if ( $report->status=='1') 確認済
-                    @endif
+                    <td class='text-nowrap small'>
+                        @if ( $report->status=='1') 確認済
+                        @endif
                     </td>
                 </tr>
                 @endforeach
