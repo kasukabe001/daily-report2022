@@ -16,7 +16,7 @@
                         <td>{{ Auth::user()->affiliation }}</td>
                     </tr>
                     <tr>
-                        <td>メールアドレス</td>
+                        <td class='text-nowrap'>メールアドレス</td>
                         <td>{{ Auth::user()->email }}</td>
                     </tr>
                 </table>
