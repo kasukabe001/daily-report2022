@@ -6,7 +6,7 @@
                     <th>日付</th>
                     <th>報告内容</th>
                     <th></th>
-                    <th>確認</th>
+                    <th class='text-nowrap'>確認</th>
                 </tr>
             </thead>
 
