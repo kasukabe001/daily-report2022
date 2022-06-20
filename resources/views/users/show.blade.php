@@ -5,10 +5,8 @@
     <br>
     <div class="row">
         <aside class="col-sm-4">
-            <div class="card">
-                <div class="card-body">
-                </div>
-                    <table class="table table-striped table-bordered">
+            <!-- div class="card" -->
+                 <table class="table table-striped table-bordered">
                     <tr>
                         <td>氏名</th>
                         <td>{{ Auth::user()->name }}さん</th>
@@ -21,9 +19,8 @@
                         <td>メールアドレス</td>
                         <td>{{ Auth::user()->email }}</td>
                     </tr>
-                    </table>
-
-            </div>
+                </table>
+            <!-- /div -->
         </aside>
     </div>
     <button type="button " class="btn btn-secondary" onClick="history.back()">戻る</button>
