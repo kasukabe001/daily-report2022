@@ -3,6 +3,9 @@
 @section('content')
     @if (Auth::check())
             <div class="col-sm-8">
+        {{--        @if (Auth::user()->admin_flg=='1')
+                    管理者です。
+                @endif   --}}
                 {{-- 投稿フォーム --}}
                 @include('reports.form')
                 {{-- 投稿一覧 --}}

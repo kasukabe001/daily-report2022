@@ -4,10 +4,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/', 'ReportsController@index');
+Route::get('list', 'ReportsController@index');
 
 Route::resource('reports', 'ReportsController');
-
 
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
@@ -21,4 +20,23 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
     Route::resource('reports', 'ReportsController', ['only' => ['index','store', 'destroy']]);
+    Route::resource('admin', 'AdminController', ['only' => ['index','edit']]);
+});
+
+
+
+
+Route::middleware('verified')->group(function() {
+    // 一般ユーザ用
+    Route::prefix('user')->group(function(){
+    // Route::get('/', 'User\HomeController@index');
+        Route::get('/', function () {
+            return view('welcome');
+        });
+    });
+
+    // 管理ユーザ用
+    Route::prefix('admin')->middleware('can:admin')->group(function(){
+        Route::get('/', 'AdminController@index');
+    });
 });
