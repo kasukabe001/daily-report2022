@@ -11,5 +11,5 @@
     </div>
 {{--    @else --}}
 {{--    @endif --}}
-
+    <a class="btn btn-lg btn-primary" href="/">日報登録</a>
 @endsection

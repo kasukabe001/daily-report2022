@@ -34,6 +34,11 @@
                     {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                 </div>
 
+                <div class="form-group">
+                    {!! Form::label('admin_flg', '管理者フラグ') !!}
+                    {!! Form::password('admin_flg', ['class' => 'form-control']) !!}
+                </div>
+
                 {!! Form::submit('登録', ['class' => 'btn btn-primary btn-block']) !!}
             {!! Form::close() !!}
         </div>

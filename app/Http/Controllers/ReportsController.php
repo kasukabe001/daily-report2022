@@ -100,7 +100,7 @@ class ReportsController extends Controller
             return redirect('/');
         }
 
-        // タスク詳細ビューでそれを表示
+        // 日報詳細ビューでそれを表示
         return view('reports.show', [
             'report' => $report,
         ]);
