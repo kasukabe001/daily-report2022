@@ -26,5 +26,5 @@
             <p class="mt-2">新規登録? {!! link_to_route('signup.get', '会員登録') !!}</p>
         </div>
     </div>
-            管理者 admin@mail.com&emsp;test
+            管理者 admin@mail.com&emsp;test1234
 @endsection

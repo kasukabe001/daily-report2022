@@ -71,7 +71,6 @@ class RegisterController extends Controller
                 'affiliation' => $data['affiliation'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
-                'admin_flg' => $data['admin_flg'],
         ]);
     }
 }
