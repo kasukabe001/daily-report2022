@@ -18,7 +18,7 @@ class AdminController extends Controller
 
         // メッセージ一覧を取得
 //        $reports = Report::all();
-        $reports = Report::with('user')->get();
+        $reports = Report::with('user')->orderBy('reports.user_id', 'asc')->orderBy('reports.id', 'desc')->get();
 
         // メッセージ一覧ビューでそれを表示
         return view('admin.index', [

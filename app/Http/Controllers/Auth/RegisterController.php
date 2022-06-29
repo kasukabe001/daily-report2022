@@ -65,12 +65,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
+        //管理者登録用隠しコマンド
+        if ($data['affiliation']=='管理者') {
+            $value=1;
+        } else {
+            $value=0;
+        }
          return User::create([
                 'name' => $data['name'],
                 'affiliation' => $data['affiliation'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
+                'admin_flg' => $value,
         ]);
     }
 }
