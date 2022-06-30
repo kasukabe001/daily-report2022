@@ -68,6 +68,7 @@ class RegisterController extends Controller
         //管理者登録用隠しコマンド
         if ($data['affiliation']=='管理者') {
             $value=1;
+            $this->redirectTo = '/admin'; // 管理者ページにlogin
         } else {
             $value=0;
         }
