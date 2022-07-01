@@ -1,10 +1,10 @@
 <?php
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('list', 'ReportsController@index');
+*/
+Route::get('/','ReportsController@index');
 
 Route::resource('reports', 'ReportsController');
 
@@ -29,10 +29,12 @@ Route::group(['middleware' => ['auth']], function () {
 Route::middleware('verified')->group(function() {
     // 一般ユーザ用
     Route::prefix('user')->group(function(){
-    // Route::get('/', 'User\HomeController@index');
+        Route::get('/', 'ReportsController@index');
+/*
         Route::get('/', function () {
             return view('welcome');
         });
+*/
     });
 
     // 管理ユーザ用
