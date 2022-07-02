@@ -1,9 +1,4 @@
 <?php
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
 Route::get('/','ReportsController@index');
 
 Route::resource('reports', 'ReportsController');
@@ -30,13 +25,7 @@ Route::middleware('verified')->group(function() {
     // 一般ユーザ用
     Route::prefix('user')->group(function(){
         Route::get('/', 'ReportsController@index');
-/*
-        Route::get('/', function () {
-            return view('welcome');
-        });
-*/
     });
-
     // 管理ユーザ用
     Route::prefix('admin')->middleware('can:admin')->group(function(){
         Route::get('/', 'AdminController@index');

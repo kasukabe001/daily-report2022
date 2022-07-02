@@ -30,7 +30,6 @@
                     <td>
                         @if($report->status==0)
                             {!! link_to_route('admin.edit', '未確認', [$report->id], ['class' => 'btn btn-primary text-nowrap']) !!} {{-- $report->status --}}
-                            {{-- <a href="{{ route('admin.edit', \Auth::user()->id) }}">プロフィール</a> --}}
                         @else
                             {!! link_to_route('admin.edit', '確認済', [($report->id) * -1], ['class' => 'btn btn-success text-nowrap']) !!} {{-- $report->status --}}                             
                         @endif

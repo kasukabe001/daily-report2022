@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Report;    // 追加
-        use App\User;
+use App\Report;     // 追加
+
+use App\User;       // 追加
+
 class ReportsController extends Controller
 {
     /**
@@ -31,11 +33,11 @@ class ReportsController extends Controller
                 ];
                 return view('reports.daily_reports', $data);
             }
-
-            $report = $user->check_post($user->id); 
+             // 同日に投稿された日報があるかどうかをチェック
+            $report = $user->is_posting($user->id);
 
             if ($report==null) {
-                // Welcomeビューで登録画面を表示
+                // 投稿済ではない場合、Welcomeビューで登録画面を表示
                 return view('welcome');               
             } else {
                 if ($report->status==1) { // 管理者確認済
@@ -76,15 +78,11 @@ class ReportsController extends Controller
             'report' => $request->report,
         ]);
 
-        // 前のURLへリダイレクトさせる
-        //        return back();
-
         $data = [];
         if (\Auth::check()) { // 認証済みの場合
             // 認証済みユーザを取得
             $user = \Auth::user();
             // ユーザの日報の一覧を作成日時の降順で取得
-            // （後のChapterで他ユーザの投稿も取得するように変更しますが、現時点ではこのユーザの投稿のみ取得します）
             $reports = $user->reports()->orderBy('created_at', 'desc')->paginate(10);
 
             $data = [

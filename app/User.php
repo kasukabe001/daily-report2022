@@ -55,36 +55,15 @@ class User extends Authenticatable
     }
 
     /**
-     * $userIdで指定されたユーザが投稿済みかどうかチェックする。
+     * $userIdのユーザが同日に投稿済みであるか調べる。投稿済みなら配列を返す。
      *
      * @param  int  $userId
-     * @return bool
-     */
-    public function check_post($userId)
-    {
-        // すでに投稿しているか
-        $report = $this->is_posting($userId);
-
-        if ($report) {
-            // 投稿済み、かつ、自分自身でない場合はフォローを外す
-            return $report;
-        } else {
-            // 上記以外の場合は何もしない
-            return ;
-        }
-    }
-
-    /**
-     * 指定された $userIdのユーザが投稿済みであるか調べる。投稿済みならtrueを返す。
-     *
-     * @param  int  $userId
-     * @return bool
+     * @return array
      */
     public function is_posting($userId)
     {
         $row="";
         $row = Report::where('user_id', $userId)->whereDate('created_at', date('Y-m-d'))->first();
-//        $row = Report::select('id')->where('user_id', $userId)->whereDate('created_at', date('Y-m-d'))->first();
         if (!empty($row)) return $row;
     }
 
