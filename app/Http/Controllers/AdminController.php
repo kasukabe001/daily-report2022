@@ -17,7 +17,6 @@ class AdminController extends Controller
     {
 
         // メッセージ一覧を取得
-//        $reports = Report::all();
         $reports = Report::with('user')->orderBy('reports.user_id', 'asc')->orderBy('reports.id', 'desc')->get();
 
         // メッセージ一覧ビューでそれを表示
@@ -75,13 +74,11 @@ class AdminController extends Controller
         // idの値で投稿を検索して取得
         $report = \App\Report::findOrFail($id);
 
-        // 認証済みユーザ（閲覧者）がその投稿の所有者である場合は、投稿を変更
-//        if (\Auth::id() === $report->user_id) {
-            // ステータスを更新
+        // ステータスを更新
             
             $report->status = $status_value;
             $report->save();
-//        }
+
         // 前のURLへリダイレクトさせる
         return back();
     }

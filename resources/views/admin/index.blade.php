@@ -24,7 +24,12 @@
                 @foreach ($reports as $report)
                 <tr>
                     <td>{{ $report->id }}</td>
-                    <td class='text-nowrap'>{{ Str::limit($report->created_at, 10,'') }}</td>
+                    <td class='text-nowrap'>
+                        {{ Str::limit($report->created_at, 10,'') }}
+                        @if( Str::limit($report->created_at, 10,'')==Str::limit(\Carbon\Carbon::today(),10,''))
+                            <span class="badge badge-danger">New</span>
+                        @endif
+                    </td>
                     <td>{!! $report->user->name !!} ({!! $report->user_id !!})</td>
                     <td>{!! nl2br(e($report->report)) !!}</td>
                     <td>
