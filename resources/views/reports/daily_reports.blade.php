@@ -10,5 +10,5 @@
         @include('reports.reports')
     </div>
 
-    <a class="btn btn-lg btn-primary" href="/">日報登録</a>
+    <a class="btn btn-primary" href="/">日報登録</a>
 @endsection
