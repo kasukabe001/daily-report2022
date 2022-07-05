@@ -18,7 +18,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('admin', 'AdminController', ['only' => ['index','edit']]);
 });
 
-
+// Mail
+//Route::get('/mail/send', 'MailController@send');
 
 
 Route::middleware('verified')->group(function() {

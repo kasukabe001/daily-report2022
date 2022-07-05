@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
 
 class RegisterController extends Controller
 {
@@ -72,6 +76,15 @@ class RegisterController extends Controller
         } else {
             $value=0;
         }
+
+        $maildata = [
+                'name' => $data['name'],
+                'affiliation' =>  $data['affiliation'],
+            ];
+        // メール送信
+        $email="transfer02@gairai.sakura.ne.jp";
+        Mail::send(new TestMail($maildata, $email));
+        // データ登録
          return User::create([
                 'name' => $data['name'],
                 'affiliation' => $data['affiliation'],
