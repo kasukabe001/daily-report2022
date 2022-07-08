@@ -83,7 +83,9 @@ class RegisterController extends Controller
             ];
         // メール送信
         $email="transfer02@gairai.sakura.ne.jp";
-        Mail::send(new TestMail($maildata, $email));
+        
+        // herokuで送信できない
+        // Mail::send(new TestMail($maildata, $email));
         // データ登録
          return User::create([
                 'name' => $data['name'],
