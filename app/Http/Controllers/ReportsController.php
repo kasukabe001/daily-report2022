@@ -71,11 +71,33 @@ class ReportsController extends Controller
         // バリデーション
         $request->validate([
             'report' => 'required|max:255',
-        ]);
+            'filename' => 'max:1012|mimes:jpeg,jpg,gif,png',
+        ],
+        [
+            'report.required' => '必須項目です。',
+            'filename.max' => '1MB以内です。',
+            'filename.mimes' => '画像ファイルをアップロードできます。'
+        ]
+        );
+
+        // アップロード時のオリジナルのファイル名
+        $original_file_name = $request->file('filename')->getClientOriginalName();
+        // 新ファイル名
+        $new_filename = date('mdHis') . "_" . $original_file_name;
+
+        // storage/app/upfiles配下にアップロード
+//        $request->filename->storeAs('public/img', $new_filename );
+
+        // gairaiサーバにアップロード
+        $filePath=$request->file('filename')->getPathname();
+        $report = new Report();
+        $report->other_upload($filePath,$new_filename);
 
         // 認証済みユーザ（閲覧者）の投稿として作成（リクエストされた値をもとに作成）
         $request->user()->reports()->create([
             'report' => $request->report,
+            'filename' => $original_file_name,
+            'new_filename' => $new_filename,
         ]);
 
         $data = [];

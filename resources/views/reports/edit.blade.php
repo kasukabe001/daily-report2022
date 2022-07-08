@@ -38,5 +38,6 @@
            {!! link_to_route('reports.index', 'キャンセル', [Auth::id()], ['class' => 'btn btn-secondary']) !!}
         </div>
     </div>    
-
+<!-- img src="/storage/img/{{ $report->new_filename }}" title="{{ $report->new_filename }}" -->
+<img src="https://gairai.sakura.ne.jp/temp/obesity/picture/{{ $report->new_filename }}" title="{{ $report->new_filename }}">
 @endsection
